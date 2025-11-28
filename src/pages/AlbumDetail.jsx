@@ -29,7 +29,7 @@ export default function AlbumDetail() {
       <div className="px-6 lg:px-12 xl:px-20">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 xl:gap-32 items-start max-w-screen-2xl mx-auto w-full">
           
-          {/* Обложка альбома — стала крупнее и красивее */}
+          Обложка альбома */}
           <div className="flex justify-center md:justify-end">
             <img 
               src={album.cover} 
