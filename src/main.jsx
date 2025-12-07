@@ -1,10 +1,27 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+// src/main.jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import AlbumDetail from "./pages/AlbumDetail";
+import "./index.css";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+// В src/main.jsx добавь импорт и маршрут:
+import About from "./pages/About";
+
+// В <Routes>:
+<Route path="/about" element={<About />} />
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="album/:id" element={<AlbumDetail />} />
+          <Route path="about" element={<About />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </React.StrictMode>
+);

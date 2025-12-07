@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { music } from "../data/music";
 
 export default function AlbumDetail() {
@@ -7,38 +7,37 @@ export default function AlbumDetail() {
 
   if (!album) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center text-4xl">
-        Альбом не найден 😢
+      <div className="min-h-screen flex items-center justify-center text-4xl text-white">
+        Альбом не найден
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-black to-pink-900 text-white py-12 lg:py-20">
-      {/* Кнопка "Назад" — чуть отступ слева */}
-      <div className="px-6 lg:px-12">
-        <Link 
-          to="/" 
-          className="inline-flex items-center gap-3 text-pink-400 hover:text-pink-200 transition text-xl font-medium mb-10"
+    <>
+
+      <div className="px-6 lg:px-12 py-8">
+        <button 
+          onClick={() => window.history.back()} 
+          className="inline-flex items-center gap-3 text-pink-400 hover:text-pink-200 transition text-xl font-medium"
         >
           ← Назад к каталогу
-        </Link>
+        </button>
       </div>
 
-      {/* ГЛАВНОЕ ИЗМЕНЕНИЕ: убрали max-w-6xl → теперь на весь экран! */}
-      <div className="px-6 lg:px-12 xl:px-20">
+      <div className="px-6 lg:px-12 xl:px-20 pb-20">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 xl:gap-32 items-start max-w-screen-2xl mx-auto w-full">
           
-          Обложка альбома */}
+          {/* Обложка */}
           <div className="flex justify-center md:justify-end">
             <img 
               src={album.cover} 
-              alt={album.album} 
+              alt={album.album}
               className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl rounded-2xl shadow-2xl object-cover"
             />
           </div>
 
-          {/* Информация об альбоме */}
+          {/* Информация */}
           <div className="space-y-8 lg:space-y-10">
             <div>
               <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-tight">
@@ -69,6 +68,6 @@ export default function AlbumDetail() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
