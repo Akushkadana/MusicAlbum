@@ -21,16 +21,15 @@ export default function Layout() {
               <Link to="/about" className="hover:text-pink-400 transition font-medium">
                 О проекте
               </Link>
+              <Link to="/basket" className="hover:text-pink-400 transition font-medium">
+  Корзина
+</Link>
             </nav>
           </div>
         </header>
-
-        {/* КОНТЕНТ — растягивается на всю ширину */}
         <main className="flex-1 w-full">
           <Outlet />
         </main>
-
-        {/* FOOTER — тоже на всю ширину */}
         <footer className="bg-black/70 backdrop-blur-sm border-t border-purple-900/30 py-8 w-full">
           <div className="px-6 text-center max-w-screen-2xl mx-auto w-full">
             <p className="text-gray-400">

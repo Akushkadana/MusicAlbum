@@ -1,27 +1,23 @@
-// src/main.jsx
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom"; 
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import AlbumDetail from "./pages/AlbumDetail";
-import "./index.css";
-
-// В src/main.jsx добавь импорт и маршрут:
 import About from "./pages/About";
+import BasketList from "./pages/BasketList";
+import CreateOrder from "./pages/CreateOrder.jsx";
 
-// В <Routes>:
-<Route path="/about" element={<About />} />
+import "./index.css";
+import { BasketProvider } from "./context/BasketContext.jsx"; 
+import App from "./App"; 
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="album/:id" element={<AlbumDetail />} />
-          <Route path="about" element={<About />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <BasketProvider>
+      <BrowserRouter>
+        <App />  
+      </BrowserRouter>
+    </BasketProvider>
   </React.StrictMode>
 );

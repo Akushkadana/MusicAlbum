@@ -1,16 +1,23 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home.jsx";
-import AlbumDetail from "./pages/AlbumDetail.jsx";
+// src/App.jsx
+import { Routes, Route } from "react-router-dom";
 
-function App() {
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import AlbumDetail from "./pages/AlbumDetail";
+import About from "./pages/About";
+import BasketList from "./pages/BasketList";
+import CreateOrder from "./pages/CreateOrder.jsx";
+
+export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/album/:id" element={<AlbumDetail />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="album/:id" element={<AlbumDetail />} />
+        <Route path="about" element={<About />} />
+        <Route path="basket" element={<BasketList />} />
+        <Route path="order" element={<CreateOrder />} />
+      </Route>
+    </Routes>
   );
 }
-
-export default App;
