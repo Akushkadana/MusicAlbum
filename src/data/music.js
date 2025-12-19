@@ -7,7 +7,7 @@ export const music = [
     genre: "R&B / Synth-pop", 
     rating: 9.2, 
     description: "Ночной Лас-Вегас, одиночество и блеск неона.", 
-    cover: "https://i.scdn.co/image/ab67616d0000b2738863bc11d2aa12b54f5aeb36", 
+    cover: "https://i.pinimg.com/1200x/62/68/c2/6268c230a07d8326cd1d20bf3b36c890.jpg", 
     tracks: "Blinding Lights, Save Your Tears, Heartless",
    },
   { id: 2, 
