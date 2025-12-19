@@ -1,11 +1,10 @@
-// src/components/Layout.jsx
 import { Outlet, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { useBasket } from "../context/BasketContext"; // если хочешь счётчик в корзине
+import { useBasket } from "../context/BasketContext";
 
 export default function Layout() {
-  const { user, logout, isAuthenticated } = useAuth(); // ← добавили это!
-  const { totalItems } = useBasket(); // ← если хочешь число в корзине (опционально)
+  const { user, logout } = useAuth(); 
+  const { totalItems } = useBasket();
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-950 via-black to-black text-white flex flex-col">
@@ -23,12 +22,15 @@ export default function Layout() {
           </Link>
 
           {/* НАВИГАЦИЯ */}
-          <nav className="flex items-center gap-8 text-lg">
+          <nav className="flex items-center gap-6 lg:gap-10 text-lg">
             <Link to="/" className="hover:text-pink-400 transition font-medium">
               Главная
             </Link>
             <Link to="/about" className="hover:text-pink-400 transition font-medium">
               О проекте
+            </Link>
+            <Link to="/contacts" className="hover:text-pink-400 transition font-medium">
+              Контакты
             </Link>
             <Link to="/basket" className="hover:text-pink-400 transition font-medium flex items-center gap-2">
               Корзина
@@ -40,19 +42,25 @@ export default function Layout() {
             </Link>
 
             {/* АВТОРИЗАЦИЯ */}
-            {isAuthenticated || user ? (
-              <div className="flex items-center gap-4">
-                <span className="text-pink-400">Привет, {user?.name || 'Пользователь'}!</span>
-                <button onClick={logout} className="text-gray-400 hover:text-red-400 transition">
+            {user ? (
+              <div className="flex items-center gap-6">
+                <span className="text-pink-400 font-medium">Привет, {user.name}!</span>
+                <button
+                  onClick={logout}
+                  className="bg-gray-800/50 hover:bg-red-600/40 hover:text-red-400 px-5 py-2 rounded-lg border border-gray-700 hover:border-red-500 transition font-medium"
+                >
                   Выйти
                 </button>
               </div>
             ) : (
               <>
-                <Link to="/login" className="hover:text-pink-400 transition">
+                <Link to="/login" className="hover:text-pink-400 transition font-medium">
                   Войти
                 </Link>
-                <Link to="/register" className="bg-pink-600 hover:bg-pink-700 px-5 py-2 rounded-lg transition">
+                <Link
+                  to="/register"
+                  className="bg-pink-600 hover:bg-pink-700 px-6 py-3 rounded-lg transition font-medium shadow-lg"
+                >
                   Регистрация
                 </Link>
               </>
